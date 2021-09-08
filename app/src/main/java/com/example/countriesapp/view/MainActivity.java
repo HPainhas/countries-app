@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     SwipeRefreshLayout refreshLayout;
 
     private ListViewModel viewModel;
-    private CountryListAdapter adapter = new CountryListAdapter(new ArrayList<>());
+    private final CountryListAdapter adapter = new CountryListAdapter(new ArrayList<>());
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity
 
         countriesList.setLayoutManager(new LinearLayoutManager(this));
         countriesList.setAdapter(adapter);
+
+        refreshLayout.setOnRefreshListener(() ->
+        {
+            viewModel.refresh();
+            refreshLayout.setRefreshing(false);
+        });
 
         observerViewModel();
     }
