@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>
 {
-    private List<CountryModel> countries;
+    private final List<CountryModel> countries;
 
     public CountryListAdapter(List<CountryModel> countries)
     {
@@ -77,6 +77,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         {
             countryName.setText(country.getCountryName());
             countryCapital.setText(country.getCapital());
+            Util.loadImage(countryImage, country.getFlag(), Util.getProgressDrawable(countryImage.getContext()));
         }
     }
 }
