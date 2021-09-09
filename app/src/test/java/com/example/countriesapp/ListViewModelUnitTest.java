@@ -63,6 +63,19 @@ public class ListViewModelUnitTest
         Assert.assertEquals(false, listViewModel.loading.getValue());
     }
 
+    @Test
+    public void getCountriesError()
+    {
+        testSingle = Single.error(new Throwable());
+
+        Mockito.when(countriesService.getCountries()).thenReturn(testSingle);
+
+        listViewModel.refresh();
+
+        Assert.assertEquals(true, listViewModel.countryLoadError.getValue());
+        Assert.assertEquals(false, listViewModel.loading.getValue());
+    }
+
     @Before
     public void setupRxSchedulers()
     {
