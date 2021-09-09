@@ -1,6 +1,7 @@
 package com.example.countriesapp.di;
 
 import com.example.countriesapp.model.CountriesService;
+import com.example.countriesapp.viewmodel.ListViewModel;
 
 import dagger.Component;
 
@@ -8,4 +9,5 @@ import dagger.Component;
 public interface ApiComponent
 {
     void inject(CountriesService service);
+    void inject(ListViewModel viewModel);
 }

@@ -1,6 +1,7 @@
 package com.example.countriesapp.di;
 
 import com.example.countriesapp.model.CountriesAPI;
+import com.example.countriesapp.model.CountriesService;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,5 +23,11 @@ public class ApiModule
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(CountriesAPI.class);
+    }
+
+    @Provides
+    public CountriesService provideCountriesService()
+    {
+        return CountriesService.getInstance();
     }
 }
